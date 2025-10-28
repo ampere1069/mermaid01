@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>報廢管理流程圖 | 台灣新鈳電子</title>
+    <title>報廢管理流程圖 | 台灣新鈳電子股份有限公司</title>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4facfe;
-            --secondary: #00f2fe;
-            --accent: #2dd4bf;
-            --dark: #0f1a2d;
-            --darker: #0a1423;
-            --light: #e0e0e0;
-            --glass: rgba(16, 30, 50, 0.7);
-            --glow: rgba(32, 130, 213, 0.5);
+            --primary: #1a3a5a;
+            --secondary: #2d5a7a;
+            --accent: #3a6a8a;
+            --dark: #2a2a2a;
+            --darker: #1a1a1a;
+            --light: #f5f5f5;
+            --background: #f5f2e8; /* 淺米色背景 */
+            --glass: rgba(255, 255, 255, 0.8);
+            --glow: rgba(58, 106, 138, 0.3);
         }
         
         * {
@@ -26,8 +27,8 @@
         }
         
         body {
-            background: linear-gradient(135deg, var(--dark) 0%, #1a2d3a 100%);
-            color: var(--light);
+            background: var(--background);
+            color: var(--dark);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
@@ -40,16 +41,16 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(32, 130, 213, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(32, 130, 213, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
+                linear-gradient(rgba(58, 106, 138, 0.15) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(58, 106, 138, 0.15) 2px, transparent 2px);
+            background-size: 80px 80px; /* 加大方格 */
             z-index: -1;
             animation: gridMove 20s linear infinite;
         }
         
         @keyframes gridMove {
             0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            100% { transform: translate(80px, 80px); }
         }
         
         .bg-particles {
@@ -63,7 +64,7 @@
         
         .particle {
             position: absolute;
-            background: rgba(32, 130, 213, 0.3);
+            background: rgba(58, 106, 138, 0.2);
             border-radius: 50%;
             animation: float 15s infinite linear;
         }
@@ -79,8 +80,8 @@
             width: 100px;
             height: 100px;
             border-radius: 20px;
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
-            border: 1px solid rgba(79, 172, 254, 0.2);
+            background: linear-gradient(135deg, rgba(26, 58, 90, 0.1) 0%, rgba(45, 90, 122, 0.1) 100%);
+            border: 1px solid rgba(26, 58, 90, 0.2);
             z-index: -1;
             animation: floatElement 25s infinite linear;
         }
@@ -106,8 +107,8 @@
             padding: 30px;
             background: var(--glass);
             border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(32, 130, 213, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(26, 58, 90, 0.3);
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
@@ -116,7 +117,7 @@
         
         .header:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
         
         .header::before {
@@ -167,7 +168,7 @@
         .title {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            color: #ffffff;
+            color: var(--dark);
             text-shadow: 0 0 10px var(--glow);
             position: relative;
             display: inline-block;
@@ -187,7 +188,7 @@
         
         .subtitle {
             font-size: 1.5rem;
-            color: #a0c8f0;
+            color: var(--darker);
             max-width: 900px;
             margin: 0 auto;
             line-height: 1.6;
@@ -195,65 +196,60 @@
         
         .content {
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+            flex-direction: column;
+            gap: 40px;
             margin-bottom: 40px;
-            min-height: 1050px;
         }
         
-        .flowchart-container {
-            flex: 2;
-            min-width: 300px;
+        /* 第一區塊 - 流程圖 */
+        .flowchart-section {
             background: var(--glass);
             border-radius: 20px;
             padding: 25px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(32, 130, 213, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(26, 58, 90, 0.3);
             backdrop-filter: blur(10px);
-            height: auto;
-            display: flex;
-            flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 800px;
         }
         
-        .flowchart-container:hover {
+        .flowchart-section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
         
-        .flowchart-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
             color: var(--primary);
             text-align: center;
-            border-bottom: 2px solid rgba(32, 130, 213, 0.3);
+            border-bottom: 3px solid rgba(26, 58, 90, 0.3);
             padding-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
         }
         
-        .flowchart-title i {
-            font-size: 1.8rem;
+        .section-title i {
+            font-size: 2.2rem;
             color: var(--secondary);
         }
         
         #flowchart {
-            background: rgba(10, 20, 35, 0.5);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 15px;
             padding: 20px;
-            flex-grow: 1;
             overflow: auto;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            min-height: 700px;
         }
         
-        /* 流程圖節點樣式 */
+        /* 流程圖節點樣式 - 加大字體 */
         .mermaid {
-            font-size: 16px;
-            font-weight: 500;
-            min-height: 800px;
+            font-size: 22px; /* 加大字體 */
+            font-weight: 600;
         }
         
         .mermaid .node rect,
@@ -261,14 +257,14 @@
         .mermaid .node ellipse,
         .mermaid .node polygon {
             transition: all 0.3s ease;
-            filter: drop-shadow(0 0 5px rgba(79, 172, 254, 0.3));
+            filter: drop-shadow(0 0 5px rgba(26, 58, 90, 0.3));
         }
         
         .mermaid .node:hover rect,
         .mermaid .node:hover circle,
         .mermaid .node:hover ellipse,
         .mermaid .node:hover polygon {
-            filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.7));
+            filter: drop-shadow(0 0 10px rgba(26, 58, 90, 0.7));
             transform: scale(1.02);
         }
         
@@ -279,48 +275,48 @@
         }
         
         .mermaid .node.startNode .label {
-            font-size: 20px;
+            font-size: 24px; /* 加大字體 */
             font-weight: bold;
         }
         
         /* 節點類型樣式 */
         .mermaid .node.ellipse rect,
         .mermaid .node.ellipse path {
-            fill: #1e5799;
+            fill: #3a6a8a;
             stroke: var(--secondary);
             stroke-width: 2px;
         }
         
         .mermaid .node.rect rect {
-            fill: #1e3a5c;
+            fill: #2d5a7a;
             stroke: var(--primary);
             stroke-width: 2px;
         }
         
         .mermaid .node.diamond rect {
-            fill: #0f4c5c;
+            fill: #1a3a5a;
             stroke: var(--accent);
             stroke-width: 2px;
         }
         
         .mermaid .node.parallel rect {
             fill: #1a3a5a;
-            stroke: #93c5fd;
+            stroke: #6a8caa;
             stroke-width: 2px;
         }
         
         .mermaid .label {
-            font-size: 15px;
+            font-size: 20px; /* 加大字體 */
             color: #ffffff;
         }
         
         .mermaid .edgeLabel {
-            font-size: 13px;
-            background-color: #1e3a5c;
+            font-size: 18px; /* 加大字體 */
+            background-color: #1a3a5a;
             color: var(--light);
             border-radius: 4px;
-            padding: 2px 5px;
-            border: 1px solid rgba(79, 172, 254, 0.3);
+            padding: 4px 8px;
+            border: 1px solid rgba(26, 58, 90, 0.3);
         }
         
         .mermaid .edgePath path {
@@ -328,42 +324,20 @@
             stroke-width: 2px;
         }
         
-        /* 右側說明容器 */
-        .description-container {
-            flex: 1;
-            min-width: 300px;
+        /* 第二區塊 - 流程說明 */
+        .description-section {
             background: var(--glass);
             border-radius: 20px;
             padding: 25px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(32, 130, 213, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(26, 58, 90, 0.3);
             backdrop-filter: blur(10px);
-            height: auto;
-            overflow-y: auto;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .description-container:hover {
+        .description-section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        .description-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-align: center;
-            border-bottom: 2px solid rgba(32, 130, 213, 0.3);
-            padding-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .description-title i {
-            font-size: 1.8rem;
-            color: var(--secondary);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
         
         .steps {
@@ -373,17 +347,17 @@
         
         .step {
             margin-bottom: 25px;
-            padding: 15px 15px 15px 60px;
+            padding: 20px 20px 20px 80px;
             position: relative;
             line-height: 1.6;
             border-radius: 10px;
-            background: rgba(10, 20, 35, 0.3);
+            background: rgba(255, 255, 255, 0.5);
             border-left: 4px solid transparent;
             transition: all 0.3s ease;
         }
         
         .step:hover {
-            background: rgba(10, 20, 35, 0.5);
+            background: rgba(255, 255, 255, 0.7);
             border-left: 4px solid var(--primary);
             transform: translateX(5px);
         }
@@ -392,19 +366,19 @@
             counter-increment: step-counter;
             content: counter(step-counter);
             position: absolute;
-            left: 15px;
-            top: 15px;
-            width: 35px;
-            height: 35px;
+            left: 20px;
+            top: 20px;
+            width: 45px;
+            height: 45px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            color: var(--darker);
+            color: var(--light);
             box-shadow: 0 0 10px var(--glow);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             transition: all 0.3s ease;
         }
         
@@ -415,12 +389,12 @@
         
         .step-title {
             font-weight: bold;
-            color: #ffffff;
+            color: var(--darker);
             margin-bottom: 10px;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .step-title i {
@@ -428,31 +402,31 @@
         }
         
         .step-content {
-            color: #c0d0e8;
-            font-size: 1.2rem;
-            line-height: 1.6;
+            color: var(--dark);
+            font-size: 1.5rem;
+            line-height: 1.7;
         }
         
         .sub-step {
-            margin-left: 20px;
-            margin-top: 10px;
-            padding-left: 15px;
-            border-left: 2px solid rgba(32, 130, 213, 0.5);
+            margin-left: 25px;
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 3px solid rgba(26, 58, 90, 0.5);
         }
         
         .sub-step-title {
             font-weight: bold;
-            color: #a0c8f0;
-            margin-bottom: 5px;
-            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.6rem;
         }
         
         .footer {
             text-align: center;
             padding: 25px;
-            font-size: 1.2rem;
-            color: #8aa8d0;
-            border-top: 2px solid rgba(32, 130, 213, 0.2);
+            font-size: 1.3rem;
+            color: var(--dark);
+            border-top: 2px solid rgba(26, 58, 90, 0.2);
             margin-top: 30px;
             background: var(--glass);
             border-radius: 15px;
@@ -470,7 +444,7 @@
         }
         
         .footer-icon {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary);
             transition: all 0.3s ease;
         }
@@ -481,12 +455,14 @@
         }
         
         @media (max-width: 768px) {
-            .content { flex-direction: column; }
             .company-name { font-size: 2rem; }
             .title { font-size: 1.8rem; }
-            .mermaid { font-size: 14px; }
-            .mermaid .label { font-size: 13px; }
-            .step { padding: 15px 15px 15px 50px; }
+            .section-title { font-size: 2rem; }
+            .mermaid { font-size: 18px; }
+            .mermaid .label { font-size: 16px; }
+            .step { padding: 15px 15px 15px 70px; }
+            .step-title { font-size: 1.5rem; }
+            .step-content { font-size: 1.3rem; }
         }
         
         /* 載入動畫 */
@@ -496,7 +472,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--dark);
+            background: var(--background);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -512,7 +488,7 @@
         .spinner {
             width: 70px;
             height: 70px;
-            border: 5px solid rgba(79, 172, 254, 0.3);
+            border: 5px solid rgba(26, 58, 90, 0.3);
             border-radius: 50%;
             border-top-color: var(--primary);
             animation: spin 1s ease-in-out infinite;
@@ -544,12 +520,13 @@
                 <h1 class="company-name">台灣新鈳電子股份有限公司</h1>
             </div>
             <h2 class="title">報廢管理流程圖</h2>
-            <p class="subtitle">展示公司資產及專案設備報廢的標準作業程序，確保報廢過程符合規範並有效利用資源</p>
+            <p class="subtitle">公司資產及專案設備報廢程序，確保報廢過程符合規範並有效利用資源</p>
         </div>
         
         <div class="content">
-            <div class="flowchart-container">
-                <h3 class="flowchart-title"><i class="fas fa-project-diagram"></i> 報廢流程圖</h3>
+            <!-- 第一區塊 - 流程圖 -->
+            <section class="flowchart-section">
+                <h3 class="section-title"><i class="fas fa-project-diagram"></i> 報廢流程圖</h3>
                 <div id="flowchart" class="mermaid">
 graph TD
     %% 定義節點ID和內容
@@ -558,39 +535,48 @@ graph TD
     A --> B[A. 在建工程廢料再利用評估]
     A --> C[B. 固定資產類分類]
     
+    %% 在建工程廢料流程
     B --> D{評估結果}
     D -->|可再利用| E[資產轉移申請<br/><small> FAD-31 / FAD-33表單</small>]
     D -->|不可再利用| F[報廢申請<br/><small>FAD-35 / FAD-18表單</small>]
     
-    C --> G{固定資產類型}
-    G -->|一般設備類| F
-    G -->|資訊設備類| H{資訊設備處置類型}
+    %% 固定資產流程
+    C --> G[固定資產定義<br/><small>單價超NT$20,000</small>]
+    G --> H{固定資產類型}
+    H -->|一般設備類| F
+    H -->|資訊設備類| I{資訊設備處置類型}
     
-    H -->|B-1. 正常報廢| I[依《GITP-7》規範]
-    H -->|B-2. 遭竊遺失| J[通知所屬/財務部門]
-    
-    I --> K[銷毀機密資料<br/><small>確保數據安全</small>]
+    %% 資訊設備處置流程
+    I -->|B-1. 正常報廢| J[依《GITP-7》規範]
+    J --> K[銷毀機密資料<br/><small>確保數據安全</small>]
     K --> F
     
-    J --> L[員警機關備案<br/><small>取得案件證明</small>]
-    L --> M[辦理報廢與銷帳]
+    I -->|B-2. 遭竊遺失| L{資產類型}
+    L -->|IT類資產| M[依ITD 700016規範辦理]
+    L -->|其他資產類| N[向員警機關備案<br/><small>取得案件證明</small>]
     M --> E1(歸檔結束)
+    N --> O[依公司銷帳規定辦理]
+    O --> E1
     
-    F --> N[採購部詢價]
-    N --> O[/填寫報廢費用審核表<br/><small>QAD-028表單</small>/]
-    O --> P{審核}
+    %% 報廢申請後流程
+    F --> P[採購部詢價]
+    P --> Q[/填寫報廢費用審核表<br/><small>QAD-028表單</small>/]
+    Q --> R{審核}
     
-    E --> P
+    %% 資產轉移後流程
+    E --> R
     
-    P -->|核准| R[執行報廢處理<br/><small>變賣/轉移/銷毀</small>]
-    P -->|不核准| S
+    %% 審核後流程
+    R -->|核准| S1[執行報廢處理<br/><small>變賣/轉移/銷毀</small>]
+    R -->|不核准| S
     
-    R --> E2(歸檔結束)
+    S1 --> E2(歸檔結束)
                 </div>
-            </div>
+            </section>
             
-            <div class="description-container">
-                <h3 class="description-title"><i class="fas fa-list-alt"></i> 流程說明</h3>
+            <!-- 第二區塊 - 流程說明 -->
+            <section class="description-section">
+                <h3 class="section-title"><i class="fas fa-list-alt"></i> 流程說明</h3>
                 <ol class="steps">
                     <li class="step" data-step="1">
                         <div class="step-title"><i class="fas fa-flag"></i> 報廢需求</div>
@@ -635,10 +621,19 @@ graph TD
                                     <div class="sub-step">
                                         <div class="sub-step-title">B-2. 遭竊遺失</div>
                                         <div class="step-content">
-                                            - 通知公司所屬部門與財務部門<br>
-                                            - 員警機關備案取得案件證明<br>
-                                            - 辦理報廢與銷帳<br>
-                                            - 流程結束
+                                            定義：保管（使用）人員發現公司所屬之財產失竊後，應立即通知公司。
+                                        </div>
+                                        <div class="sub-step">
+                                            <div class="sub-step-title">IT類資產</div>
+                                            <div class="step-content">
+                                                參照ITD 700016第四章作業程序第十六節加密儲存設備使用規範辦理，流程結束。
+                                            </div>
+                                        </div>
+                                        <div class="sub-step">
+                                            <div class="sub-step-title">其他資產類</div>
+                                            <div class="step-content">
+                                                如小偷闖空門竊取公司財物，須向員警機關備案取得案件證明，再依公司銷帳規定辦理，流程結束。
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -670,15 +665,15 @@ graph TD
                     </li>
                     <li class="step" data-step="8">
                         <div class="step-title"><i class="fas fa-archive"></i> 歸檔結束</div>
-                        <div class="step-content">完成所有程序後，將申請表單、前中後照片、審核文件CHECKLIST、處置證明等資料歸檔，流程結束。</div>
+                        <div class="step-content">完成所有程序後，將相關資料歸檔，流程結束。</div>
                     </li>
                 </ol>
-            </div>
+            </section>
         </div>
         
         <div class="footer">
             <p>台灣新鈳電子股份有限公司 | ISO9001:2015 | Q3003</p>
-            <p>Mermaid流程圖 | 品管部</p>
+            <p>報廢流說明 | 品管部</p>
             <div class="footer-icons">
                 <a href="#" class="footer-icon"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="footer-icon"><i class="fas fa-globe"></i></a>
@@ -692,7 +687,7 @@ graph TD
         // 初始化Mermaid
         mermaid.initialize({
             startOnLoad: true,
-            theme: 'dark',
+            theme: 'default',
             flowchart: {
                 useMaxWidth: false,
                 htmlLabels: true,
@@ -725,7 +720,7 @@ graph TD
                 particle.style.left = `${Math.random() * 100}%`;
                 particle.style.top = `${Math.random() * 100}%`;
                 particle.style.animationDelay = `${Math.random() * 15}s`;
-                particle.style.background = `rgba(${32 + Math.random() * 50}, ${130 + Math.random() * 50}, ${213 + Math.random() * 50}, ${0.2 + Math.random() * 0.3})`;
+                particle.style.background = `rgba(${26 + Math.random() * 30}, ${58 + Math.random() * 30}, ${90 + Math.random() * 30}, ${0.2 + Math.random() * 0.3})`;
                 container.appendChild(particle);
             }
         }
@@ -733,7 +728,7 @@ graph TD
         // 添加滾動動畫效果
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.header, .flowchart-container, .description-container');
+            const parallaxElements = document.querySelectorAll('.header, .flowchart-section, .description-section');
             
             parallaxElements.forEach(el => {
                 const speed = 0.5;
